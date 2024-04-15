@@ -13,15 +13,16 @@ public class ProductVariation {
     @Column(name = "variation_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_item_id", nullable = false)
-    private ProductItem productItem;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "size_id", nullable = false)
-    private SizeOption size;
 
     @Column(name = "qty_in_stock", nullable = false)
     private Integer qtyInStock;
+
+    @ManyToOne
+    @JoinColumn(name = "product_item_id")
+    private ProductItem productItem;
+
+    @ManyToOne
+    @JoinColumn(name = "size_id")
+    private SizeOption sizeOption;
 
 }

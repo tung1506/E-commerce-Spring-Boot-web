@@ -13,8 +13,8 @@ public class ProductImage {
     @Column(name = "image_id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_item_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "product_item_id")
     private ProductItem productItem;
 
     @Lob
