@@ -32,13 +32,11 @@ public class ProductServiceImpl implements ProductService {
                     productDTO.setProductName(product.getProductName());
                     productDTO.setDescription(product.getProductDescription());
 
-                    // Get one image filename from product items
                     product.getProductItems().stream()
                             .findFirst()
                             .flatMap(productItem -> productItem.getProductImages().stream().findFirst())
                             .ifPresent(productImage -> productDTO.setImageFilename(productImage.getImageFilename()));
 
-                    // Get the lowest and highest original price of product items
                     productDTO.setMinOriginalPrice(findMinPrice(product.getProductItems(), ProductItem::getOriginalPrice));
                     productDTO.setMaxOriginalPrice(findMaxPrice(product.getProductItems(), ProductItem::getOriginalPrice));
 
